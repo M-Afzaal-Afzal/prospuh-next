@@ -60,7 +60,7 @@ const Icon = styled("img")({
   margin: `0px 20px`
 });
 const ButtonYear = styled(Button)({
-  fontFamily: `Montserrat, sans-serif`
+  fontFamily: `Montserrat, sans-serif`,
 });
 
 const IconWrap = styled("div")({
@@ -135,14 +135,30 @@ const Invested = () => {
           {yearButton.map((item, index) => {
             return (
               <Box key={index}>
-                <ButtonYear
+                <Button
+                    sx={{
+                      borderRadius:' 7px',
+                      fontStyle: 'normal',
+                      fontWeight: 'bold',
+                      fontSize: '13px',
+                      lineHeight: '150.9%',
+                      textAlign: 'center',
+                      letterSpacing: '0.05em',
+                      /*color: #fbfaf5;*/
+                      padding: '14px 40px',
+                      border: '2px solid #0db033',
+                      cursor: 'pointer',
+                      color:  `${item.id === yearlyButton ? '#fbfaf5' : "#0db033"}` ,
+                      margin: '0px 10px',
+                      background: `${item.id === yearlyButton ? 'linear-gradient(90.05deg, #0db033 -30.69%, #28b078 118.83%)' : ""}` ,
+                    }}
                   onClick={() => setOneYearPrice(item)}
-                  className={`${item.id === yearlyButton
-                    ? "active-year"
-                    : "no-active-year"}`}
+                  // className={`${item.id === yearlyButton
+                  //   ? "active-year"
+                  //   : "no-active-year"}`}
                 >
                   {item.title}
-                </ButtonYear>
+                </Button>
               </Box>
             );
           })}
