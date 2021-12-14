@@ -136,6 +136,23 @@ const Invested = () => {
             return (
               <Box key={index}>
                 <ButtonYear
+                    sx={{
+                      background:`${item.id === yearlyButton
+                          ? 'linear-gradient(90.05deg, #0db033 -30.69%, #28b078 118.83%)'
+                          : ""}`,
+                      borderRadius: '7px',
+                      fontStyle: 'normal',
+                      fontWeight: 'bold',
+                      fontSize: '13px',
+                      lineHeight: '150.9%',
+                      textAlign: 'center',
+                      letterSpacing: '0.05em',
+                      color: `${item.id === yearlyButton ? '#fbfaf5' : '#0db033'}` ,
+                      padding: '14px 40px',
+                      border: '2px solid #0db033',
+                      cursor: 'pointer',
+                      margin: '0px 10px',
+                    }}
                   onClick={() => setOneYearPrice(item)}
                   className={`${item.id === yearlyButton
                     ? "active-year"
