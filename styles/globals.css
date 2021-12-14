@@ -45,7 +45,42 @@ a {
 .mobileMenu {
   display: none;
 }
-
+.n-active-logo {
+  filter: grayscale(100%);
+  opacity: 0.6;
+  -webkit-filter: grayscale(100%);
+}
+.active-year {
+  background: linear-gradient(90.05deg, #0db033 -30.69%, #28b078 118.83%);
+  border-radius: 7px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 150.9%;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #fbfaf5;
+  padding: 14px 40px;
+  border: 2px solid #0db033;
+  cursor: pointer;
+  margin: 0px 10px;
+  
+}
+.no-active-year {
+  border-radius: 7px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 150.9%;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #fbfaf5;
+  padding: 14px 40px;
+  border: 2px solid #0db033;
+  cursor: pointer;
+  color: #0db033;
+  margin: 0px 10px;
+}
 @media only screen and (max-width: 768px) {
   .desktopMenu {
     display: none;
@@ -55,5 +90,17 @@ a {
   }
   .react-tel-input .form-control {
     width: 100% !important;
+  }
+}
+@media only screen and (max-width: 520px) {
+  .active-year {
+    width: 100%;
+    margin-bottom: 20px;
+    margin: 0px 0px;
+  }
+  .no-active-year {
+    width: 100%;
+    margin-bottom: 20px;
+    margin: 0px 0px;
   }
 }

@@ -122,6 +122,7 @@ const Header = () => {
               </Box>
               <Box
                 sx={{
+                  marginBottom:"50px",
                   "@media (max-width: 520px)": {
                     display: "flex",
                     justifyContent: "center"
