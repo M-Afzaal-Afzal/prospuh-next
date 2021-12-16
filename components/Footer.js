@@ -4,6 +4,8 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import DownloadApp from "../views/Home/DownloadApp";
 import {styled} from "@mui/material/styles";
+import {Stack} from "@mui/material";
+import {FaTwitter,FaLinkedinIn,FaInstagram,FaFacebook} from 'react-icons/fa';
 
 const Title = styled('h1')({
   fontFamily: `Montserrat, sans-serif`,
@@ -122,6 +124,80 @@ const Footer = () => {
               </LinkWrap>
             </Grid>
           </Grid>
+
+          <Box sx={{
+            display: 'grid',
+            gridTemplateColumns: {
+              xs: '1fr',
+              md: '1fr 1fr',
+            },
+            gridGap: '2rem',
+            justifyContent: 'space-between',
+            mt: '3rem',
+          }}>
+
+            <Box sx={{gridColumn: '1/-1'}}>
+
+              <Stack spacing={4} direction={'row'}>
+                <Box sx={{
+                  color: '#fff',
+                  cursor: 'pointer',
+                }}>
+                <FaTwitter size={25}/>
+                </Box>
+                <Box sx={{
+                  color: '#fff',
+                  cursor: 'pointer',
+                }}>
+                <FaLinkedinIn size={25}/>
+                </Box>
+                <Box sx={{
+                  color: '#fff',
+                  cursor: 'pointer',
+                }}>
+                  <FaInstagram size={25}/>
+                </Box>
+                <Box sx={{
+                  color: '#fff',
+                  cursor: 'pointer',
+                }}>
+                  <FaFacebook size={25}/>
+                </Box>
+              </Stack>
+
+            </Box>
+
+            <Box sx={{
+              fontFamily: 'Montserrat',
+              fontSize: '14px',
+              fontStyle: 'normal',
+              fontWeight: 500,
+              lineHeight: '22px',
+              letterSpacing: 0,
+              textAlign: 'left',
+              color:'#FBFAF5B2',
+            }}>
+              Registered under the Securities Industry Act, 2011 with the Securities Comission of The Bahams Registration No. The value of investments can go up as well as down and you may receive back less than your original investment.
+            </Box>
+
+            <Box sx={{
+              fontFamily: 'Montserrat',
+              fontSize: '14px',
+              fontStyle: 'normal',
+              fontWeight: 500,
+              lineHeight: '22px',
+              letterSpacing: 0,
+              textAlign: 'left',
+              color:'#FBFAF5B2',
+            }}>
+              Copyright ©️ 2021 Prospuh, All rights reserved. The Apple logo is a trademark of Apple Inc. App Store is a service mark of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.
+            </Box>
+
+
+            <Box/>
+
+          </Box>
+
         </Container>
       </Box>
     </Box>
