@@ -6,11 +6,10 @@ import {styled} from "@mui/material/styles";
 
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import {addNumberDocument} from "../../firebase/clientApp";
+import {toast} from "react-hot-toast";
 
-const DownloadApp = () => {
-  const [phone, setPhone] = useState();
-
-  const Title = styled("h1")({
+const Title = styled("h1")({
     fontStyle: `normal`,
     fontWeight: `bold`,
     fontSize: `32px`,
@@ -19,19 +18,20 @@ const DownloadApp = () => {
     color: `#fbfaf5`,
     marginBottom: `18px`,
     "@media (max-width: 768px)": {
-      fontSize: `22px`,
-      lineHeight: `30px`,
-   }
-  });
-  const Paragraph = styled("p")({
+        fontSize: `22px`,
+        lineHeight: `30px`,
+    }
+});
+const Paragraph = styled("p")({
     fontFamily: `Montserrat, sans-serif`,
     fontStyle: `normal`,
     fontWeight: `600`,
     fontSize: `14px`,
     lineHeight: `152.9%`,
     color: `#d7d7d7`
-  });
-  const ButtonInput = styled("span")({
+});
+const ButtonInput = styled("span")({
+    cursor: 'pointer',
     background: `#cac9c5`,
     borderTopRightRadius: `8px`,
     borderBottomRightRadius: `8px`,
@@ -46,11 +46,34 @@ const DownloadApp = () => {
     display: `block`,
     textAlign:"center",
     "@media (max-width: 520px)": {
-      borderRadius: "4px"
+        borderRadius: "4px"
     }
-  });
+});
 
-  const AppImage = styled("img")({});
+const AppImage = styled("img")({});
+
+const DownloadApp = () => {
+  const [phone, setPhone] = useState();
+
+    const addNumberToDatabase = async () => {
+        try {
+            if (phone) {
+                console.log(phone)
+                await addNumberDocument(phone);
+                console.log('phone added successfully')
+                toast.success('Phone Number added Successfully');
+                setPhone(undefined);
+            } else {
+                toast.error('Please Add Phone Number');
+                setPhone(undefined);
+            }
+        } catch (err) {
+            console.log(err);
+            toast.error(err.message);
+        }
+
+    }
+
   return (
     <Container maxWidth="xl">
       <Box
@@ -140,8 +163,8 @@ const DownloadApp = () => {
                   placeholder={"Your phone number"}
                 />
               </Box>
-              <div>
-                <ButtonInput>Text me the link</ButtonInput>
+              <div >
+                <ButtonInput onClick={addNumberToDatabase}>Text me the link</ButtonInput>
               </div>
             </Box>
           </Grid>
