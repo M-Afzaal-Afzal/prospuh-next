@@ -19,11 +19,16 @@ const app = !getApps().length ? initializeApp(clientCredentials) : getApp();
 const db = getFirestore();
 
 const addNumberDocument = async (number) => {
+    try {
     const docRef = await addDoc(collection(db,'numbers'),{
         value: number
     })
-
     console.log('New document added',docRef.id);
+
+    } catch (err) {
+        console.log(err,'Error')
+    }
+
 };
 
 export {app,db,addNumberDocument};
