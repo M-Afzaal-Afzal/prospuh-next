@@ -31,4 +31,17 @@ const addNumberDocument = async (number) => {
 
 };
 
-export {app,db,addNumberDocument};
+const addWaitlistedDocument = async (waitlisted) => {
+    try {
+        const docRef = await addDoc(collection(db,'waitlisted'),{
+            ...waitlisted
+        })
+        console.log('Waitlisted document added',docRef.id);
+
+    } catch (err) {
+        console.log(err,'Error')
+    }
+
+};
+
+export {app,db,addNumberDocument,addWaitlistedDocument};

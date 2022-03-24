@@ -5,13 +5,26 @@ import Image from 'next/image';
 import Typography from "@mui/material/Typography";
 import Counter from "../components/Counter";
 import {useForm} from 'react-hook-form';
+import {addWaitlistedDocument} from "../firebase/clientApp";
+import {toast} from "react-hot-toast";
 
 const ComingSoon = () => {
 
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const {register, handleSubmit,reset, formState: {errors}} = useForm();
 
-    const onSubmit = ({name, email}) => {
-        console.log(name, email, "Name and Email")
+    const onSubmit = async (data) => {
+        try {
+            console.log(data, "Name and Email")
+            await addWaitlistedDocument(data)
+            toast.success('Waitlisted user added Successfully');
+            reset({
+                name: '',
+                email: '',
+            })
+        } catch (err) {
+            toast.error(err.message);
+            console.log(err);
+        }
     };
 
     console.log("Error", errors);
@@ -217,7 +230,8 @@ const ComingSoon = () => {
                                 justifyContent: 'center',
                                 alignItems: 'center',
                                 gridTemplateColumns: {
-                                    xs: '1fr',sm:'auto auto'},
+                                    xs: '1fr', sm: 'auto auto'
+                                },
                                 marginTop: '2rem',
                                 gridGap: '1rem',
                             }}>
